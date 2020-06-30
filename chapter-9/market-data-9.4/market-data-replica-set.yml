@@ -1,0 +1,22 @@
+---
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: market-data
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: market-data
+  template:
+    metadata:
+      labels:
+        app: market-data
+        tier: backend
+        track: stable
+    spec:
+      containers:
+      - name: market-data
+        image: ebisuyak/market-data:latest
+        ports:
+        - containerPort: 8000
