@@ -8,10 +8,10 @@ master:
     - "staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods leftShift java.util.Map java.util.Map"
     - "staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods split java.lang.String"
   installPlugins:
-    - kubernetes:1.18.2
+    - kubernetes:1.25.7
     - workflow-aggregator:2.6
     - workflow-job:2.33
-    - credentials-binding:1.19
+    - credentials-binding:1.23
     - git:3.11.0
 
 agent:
@@ -28,6 +28,3 @@ persistence:
 networkPolicy:
   enabled: false
   apiVersion: networking.k8s.io/v1
-
-rbac:
-  create: true
