@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: market-data
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: market-data
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: market-data
+        tier: backend
+        track: stable
+    spec:
+      containers:
+      - name: market-data
+        image: ebisuyak/market-data:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 8000
+        livenessProbe:
+          httpGet:
+            path: /ping
+            port: 8000
+          initialDelaySeconds: 10
+          timeoutSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 8000
+          initialDelaySeconds: 10
+          timeoutSeconds: 15
