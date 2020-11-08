@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: market-data
-        image: ebisuyak/market-data:v2
+        image: morganjbruce/market-data:v2
         resources:
           requests:
             cpu: 100m
